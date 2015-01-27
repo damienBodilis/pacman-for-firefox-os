@@ -38,13 +38,22 @@ Creature.prototype.resetPosition = function() {
 Creature.prototype.checkForTeleport = function(){
     // teleport to right
     if (this.getX() < 0) {
-        this.setX(map.columns * map.squareSize - this.speed);
-        this.setY(168);
+        this.setX(map.columns * map.squareSize);
     }
 
     // teleport to left
     if (this.getX() > map.columns * map.squareSize) {
         this.setX(0);
-        this.setY(168);
     }
+	
+	// teleport to top
+    if (this.getY() < 0) {
+        this.setY(map.lines * map.squareSize);
+    }
+	
+	// teleport to bottom
+    if (this.getY() > map.lines * map.squareSize) {
+        this.setY(0);
+    }
+	
 };
