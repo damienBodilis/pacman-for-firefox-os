@@ -89,7 +89,6 @@ function runModeChanger(){
 
 function pauseModeChanger(){
     clearTimeout(modeChangeTimer);
-
     var newTime = modeTimes[0].time - (new Date().getSeconds() - modeChangeTimerStartTime);
     if(newTime >= 0){
         modeTimes[0].time = newTime;
@@ -134,12 +133,14 @@ function animate() {
 
   // next animation
   if (map.end < 1) {
-    alert('You win !');
+    alert("You win !\n" + "votre score est de : " + pacman.score);
+    window.location.reload();
   } else if (pacman.life <= 0) {
     // Loose game
     // Draw life of pacman
     document.getElementById('life').innerHTML = this.life;
     alert("You loose !");
+    window.location.reload();
   } else {
     for(var i = 0; i < ghostContainer.length; ++i){
       if ((pacman.getPositionX() == ghostContainer[i].getPositionX() && pacman.getPositionY() == ghostContainer[i].getPositionY())) {

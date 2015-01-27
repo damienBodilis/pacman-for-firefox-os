@@ -5,7 +5,7 @@ var map = {
     littleFoodSize: 2,
     bigFoodRadius: 5,
     bigFoodPosition: 1,
-    end: 191,
+    end: 152,
     level: 1,
     fruitImage: new Image(),
     grid: new Array(
