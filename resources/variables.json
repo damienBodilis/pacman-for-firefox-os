@@ -1,0 +1,12 @@
+{
+	"mainTitre" : "resources/images/menu_hand_title.png",
+	"mainTitreMusique" : "resources/sound/pacman_beginning.wav",
+	"menuSound" : "resources/sound/pacman_menu_beep.ogg",
+	"beepEnter" : "resources/sound/pacman_menu_next.ogg",
+	"beepCancel" : "resources/sound/pacman_menu_previous.ogg",
+	"chomp" : "resources/sound/pacaman_chomp.wav",
+	"eatFruit" : "resources/sound/pacman_eatfruit.wav",
+	"eatGhost" : "resources/sound/pacman_eatghost.wav",
+	"victoriousSong" : "resources/sound/pacman_winner.ogg",
+	"loseSong" : "resources/sound/pacman_death.wav",
+
