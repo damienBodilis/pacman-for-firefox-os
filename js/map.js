@@ -188,7 +188,7 @@ var map = {
                 } else if (this.grid[y][x] == 7) {
                     // Fruit
                     if (this.level == 1) {
-                        this.fruitImage.src = 'img/cherry.png';
+                        this.fruitImage.src = 'resources/img/cherry.png';
                     }
                     context.drawImage(this.fruitImage, (this.squareSize*x) + 1, (this.squareSize*y) + 1, 14, 14);
 

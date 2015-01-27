@@ -37,7 +37,7 @@ Ghost.prototype.reset = function(){
 };
 
 Ghost.prototype.makeEatable = function(){
-    this.image.src = "img/eatable_ghost.png";
+    this.image.src = "resources/img/eatable_ghost.png";
     this.eatable = true;
 };
 
@@ -55,12 +55,12 @@ Ghost.prototype.goFrightened = function(){
     }
 
     this.setMode("frightened");
-    this.image.src = "img/eatable_ghost.png";
+    this.image.src = "resources/img/eatable_ghost.png";
 
     setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 8000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "img/eatable_ghost.png"; }.bind(this), 8500);
+    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 8500);
     setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 9000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "img/eatable_ghost.png"; }.bind(this), 9500);
+    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 9500);
     setTimeout(function(){
         this.makeNotEatable();
         this.setMode(lastMode);
@@ -80,13 +80,13 @@ Ghost.prototype.initialise = function(){
     this.reset();
 
     if (this.color == "blue")
-        this.imageSrcGhost = "img/blue_ghost.png";
+        this.imageSrcGhost = "resources/img/blue_ghost.png";
     else if (this.color == "pink")
-        this.imageSrcGhost = "img/pink_ghost.png";
+        this.imageSrcGhost = "resources/img/pink_ghost.png";
     else if (this.color == "red")
-        this.imageSrcGhost = "img/red_ghost.png";
+        this.imageSrcGhost = "resources/img/red_ghost.png";
     else if (this.color == "orange")
-        this.imageSrcGhost = "img/orange_ghost.png";
+        this.imageSrcGhost = "resources/img/orange_ghost.png";
 
     this.image.src = this.imageSrcGhost;
 };
