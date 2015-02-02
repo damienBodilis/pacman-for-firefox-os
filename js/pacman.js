@@ -53,19 +53,19 @@ Pacman.prototype.eatBigFood = function(){
 
     // big food
     this.score += 50;
-    map.end--;
+    //map.end--;
 
     lastTimeEatable = new Date();
     lastTimeEatable = lastTimeEatable.getTime();
 };
 
 Pacman.prototype.eatLittleFood = function(){
-    map.end--;
+    //map.end--;
     this.score += 10;
 };
 
 Pacman.prototype.eatFruit = function(){
-    map.end--;
+    //map.end--;
     this.score += 100;
 };
 
