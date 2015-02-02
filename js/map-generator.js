@@ -113,7 +113,7 @@ function GenerateLevel2(){
 function GenerateLevel3(){
 	
 	var DefaultGrid = new Array();
-        DefaultGrid.push(new Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
+        DefaultGrid.push(new Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1));
         DefaultGrid.push(new Array(1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1));
         DefaultGrid.push(new Array(1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1));
         DefaultGrid.push(new Array(1, 4, 2, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 4, 1));
@@ -121,7 +121,7 @@ function GenerateLevel3(){
         DefaultGrid.push(new Array(0, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 0));
         DefaultGrid.push(new Array(1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1));
         DefaultGrid.push(new Array(1, 1, 1, 1, 2, 1, 1, 1, 0, 1, 0, 1, 1, 1, 2, 1, 1, 1, 1));
-        DefaultGrid.push(new Array(1, 2, 2, 2, 2, 1, 0, 0, 0, 7, 0, 0, 0, 1, 2, 0, 0, 2, 1));
+        DefaultGrid.push(new Array(1, 2, 2, 2, 2, 1, 0, 0, 0, 7, 0, 0, 0, 1, 2, 2, 2, 2, 1));
         DefaultGrid.push(new Array(1, 2, 1, 1, 2, 1, 0, 1, 1, 5, 1, 1, 0, 1, 2, 1, 1, 2, 1));
         DefaultGrid.push(new Array(1, 7, 1, 1, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1, 2, 1, 1, 7, 1));
         DefaultGrid.push(new Array(1, 2, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 2, 1));
@@ -134,7 +134,7 @@ function GenerateLevel3(){
         DefaultGrid.push(new Array(1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1));
         DefaultGrid.push(new Array(1, 2, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1));
         DefaultGrid.push(new Array(1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1));
-        DefaultGrid.push(new Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
+        DefaultGrid.push(new Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1));
 	return DefaultGrid;
 
 }

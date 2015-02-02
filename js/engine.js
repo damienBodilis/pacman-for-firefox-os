@@ -83,12 +83,25 @@ function runModeChanger(){
         if(modeTimes.length > 0) {
             runModeChanger();
         }
+		else{
+			modeTimes = [
+			{ time: 0, changeTo: "scatter"},
+			{ time: 7, changeTo: "chase"},
+			{ time: 20, changeTo: "scatter"},
+			{ time: 7, changeTo: "chase"},
+			{ time: 20, changeTo: "scatter"},
+			{ time: 5, changeTo: "chase"},
+			{ time: 20, changeTo: "scatter"},
+			{ time: 5, changeTo: "chase"},
+			];
+		}
 
     }, modeTimes[0].time * 1000);
 }
 
 function pauseModeChanger(){
     clearTimeout(modeChangeTimer);
+	modeChangeTimerStartTime = new Date().getSeconds();
     var newTime = modeTimes[0].time - (new Date().getSeconds() - modeChangeTimerStartTime);
     if(newTime >= 0){
         modeTimes[0].time = newTime;
