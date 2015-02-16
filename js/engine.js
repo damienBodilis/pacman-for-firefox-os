@@ -148,10 +148,10 @@ function animate() {
   if (map.end < 1) {
     alert("You win !\n" + "votre score est de : " + pacman.score);
     window.location.reload();
-  } else if (pacman.life <= 0) {
+  } else if (pacman.life == 0) {
     // Loose game
     // Draw life of pacman
-    document.getElementById('life').innerHTML = this.life;
+    document.getElementById('life').innerHTML = "0";
     alert("You loose !");
     window.location.reload();
   } else {
