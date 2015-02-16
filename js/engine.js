@@ -1,6 +1,6 @@
 /* --- Init global variable -- */
 var canvas, context;
-
+var difficulte = 3;
 // For time
 var lastTimeEatable, newTime, lastTime;
 
@@ -56,16 +56,7 @@ window.addEventListener('load', function () {
 
 //modes functions
 
-var modeTimes = [
-    { time: 0, changeTo: "scatter"},
-    { time: 7, changeTo: "chase"},
-    { time: 20, changeTo: "scatter"},
-    { time: 7, changeTo: "chase"},
-    { time: 20, changeTo: "scatter"},
-    { time: 5, changeTo: "chase"},
-    { time: 20, changeTo: "scatter"},
-    { time: 5, changeTo: "chase"},
-];
+var modeTimes = [{ time: 0, changeTo: "scatter"}];
 
 var modeChangeTimer = null;
 var modeChangeTimerStartTime = null;
@@ -83,18 +74,42 @@ function runModeChanger(){
         if(modeTimes.length > 0) {
             runModeChanger();
         }
-		else{
-			modeTimes = [
-			{ time: 0, changeTo: "scatter"},
-			{ time: 7, changeTo: "chase"},
-			{ time: 20, changeTo: "scatter"},
-			{ time: 7, changeTo: "chase"},
-			{ time: 20, changeTo: "scatter"},
-			{ time: 5, changeTo: "chase"},
-			{ time: 20, changeTo: "scatter"},
-			{ time: 5, changeTo: "chase"},
-			];
-		}
+        else if(difficulte == 1){
+          modeTimes = [
+          { time: 0, changeTo: "scatter"},
+          { time: 7, changeTo: "scatter"},
+          { time: 20, changeTo: "scatter"},
+          { time: 7, changeTo: "scatter"},
+          { time: 20, changeTo: "scatter"},
+          { time: 5, changeTo: "scatter"},
+          { time: 20, changeTo: "scatter"},
+          { time: 5, changeTo: "scatter"},
+          ];
+        }
+    		else if(difficulte == 2){
+    			modeTimes = [
+    			{ time: 0, changeTo: "scatter"},
+    			{ time: 7, changeTo: "chase"},
+    			{ time: 20, changeTo: "scatter"},
+    			{ time: 7, changeTo: "chase"},
+    			{ time: 20, changeTo: "scatter"},
+    			{ time: 5, changeTo: "chase"},
+    			{ time: 20, changeTo: "scatter"},
+    			{ time: 5, changeTo: "chase"},
+    			];
+    		}
+        else if(difficulte == 3){
+          modeTimes = [
+          { time: 0, changeTo: "chase"},
+          { time: 7, changeTo: "chase"},
+          { time: 20, changeTo: "chase"},
+          { time: 7, changeTo: "chase"},
+          { time: 20, changeTo: "chase"},
+          { time: 5, changeTo: "chase"},
+          { time: 20, changeTo: "chase"},
+          { time: 5, changeTo: "chase"},
+          ];
+        }
 
     }, modeTimes[0].time * 1000);
 }
