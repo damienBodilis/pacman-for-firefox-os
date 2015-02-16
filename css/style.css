@@ -13,7 +13,7 @@ body {
 }
 
 #canvas {
-	position: relative;
+	position: float;
 	left:3px;
 }
 

@@ -62,11 +62,13 @@ Pacman.prototype.eatBigFood = function(){
 Pacman.prototype.eatLittleFood = function(){
     //map.end--;
     this.score += 10;
+	chomp.play();
 };
 
 Pacman.prototype.eatFruit = function(){
     //map.end--;
     this.score += 100;
+	eatFruit.play();
 };
 
 Pacman.prototype.askForDirection = function(){

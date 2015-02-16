@@ -159,10 +159,11 @@ function animate() {
       if ((pacman.getPositionX() == ghostContainer[i].getPositionX() && pacman.getPositionY() == ghostContainer[i].getPositionY())) {
         if(ghostContainer[i].eatable){
           pacman.score += 200;
-
+		  eatGhost.play();
           ghostContainer[i].reset();
         } else {
           // Lost life
+		  loseSong.play();
           pacman.life--;
           pacman.resetPosition();
 
