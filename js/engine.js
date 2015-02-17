@@ -69,7 +69,6 @@ function runModeChanger(){
                 ghostContainer[i].setMode(modeTimes[0].changeTo);
             }
         }
-
         modeTimes.shift();
         if(modeTimes.length > 0) {
             runModeChanger();
@@ -174,14 +173,14 @@ function animate() {
       if ((pacman.getPositionX() == ghostContainer[i].getPositionX() && pacman.getPositionY() == ghostContainer[i].getPositionY())) {
         if(ghostContainer[i].eatable){
           pacman.score += 200;
-		  eatGhost.play();
-          ghostContainer[i].reset();
+		      eatGhost.play();
+          ghostContainer[i].hasBeenEaten();
+          console.log(ghostContainer[i].isEaten);
         } else {
           // Lost life
-		  loseSong.play();
+		      loseSong.play();
           pacman.life--;
           pacman.resetPosition();
-
           for(var i = 0; i < ghostContainer.length; ++i){
             ghostContainer[i].reset();
           }

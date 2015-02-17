@@ -15,6 +15,8 @@ GhostRed.prototype.chooseTarget = function(){
         this.target = [pacman.getPositionY(), pacman.getPositionX()];
     } else if(this.getMode() == "frightened"){
         this.chooseRandomTarget();
+    } else if (this.getMode() == "backHome"){
+        this.target = [9,8];
     }
 
 };
@@ -54,6 +56,8 @@ GhostPink.prototype.chooseTarget = function(){
         }
     } else if(this.getMode() == "frightened"){
         this.chooseRandomTarget();
+    } else if (this.getMode() == "backHome"){
+        this.target = [9,8];
     }
 
 };
@@ -101,6 +105,8 @@ GhostBlue.prototype.chooseTarget = function(){
 
     } else if(this.getMode() == "frightened"){
         this.chooseRandomTarget();
+    } else if (this.getMode() == "backHome"){
+        this.target = [9,8];
     }
 
 };
@@ -138,6 +144,8 @@ GhostOrange.prototype.chooseTarget = function(){
 
     } else if(this.getMode() == "frightened"){
         this.chooseRandomTarget();
+    } else if (this.getMode() == "backHome"){
+        this.target = [9,8];
     }
 
 };

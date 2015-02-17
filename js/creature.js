@@ -35,6 +35,14 @@ Creature.prototype.resetPosition = function() {
     this.y = this.startY;
 };
 
+Creature.prototype.getStartX = function() {
+    return (this.startX);
+};
+
+Creature.prototype.getStartY = function() {
+    return (this.startY);
+};
+
 Creature.prototype.checkForTeleport = function(){
     // teleport to right
     if (this.getX() < 0) {

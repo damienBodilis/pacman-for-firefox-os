@@ -46,7 +46,6 @@ Pacman.prototype.setScoreValue = function(position, direction) {
 Pacman.prototype.eatBigFood = function(){
     pauseModeChanger();
     //setTimeout(function(){runModeChanger(); console.log("123");}, 10000);
-
     for(var i = 0; i < ghostContainer.length; ++i){
         ghostContainer[i].goFrightened();
     }
@@ -61,12 +60,15 @@ Pacman.prototype.eatBigFood = function(){
 
 Pacman.prototype.eatLittleFood = function(){
     //map.end--;
+
     this.score += 10;
 	chomp.play();
 };
 
 Pacman.prototype.eatFruit = function(){
     //map.end--;
+            console.log(this.getPositionX());
+        console.log(this.getPositionY());
     this.score += 100;
 	eatFruit.play();
 };

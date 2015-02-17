@@ -15,6 +15,7 @@ function Ghost(color, _x, _y, _idleTime)
     this.imageSrcGhost = "";
     this.token = 0;
     this.target = [10, 10];
+    this.isEaten = 0;
 
     this.idleTime = _idleTime;
 };
@@ -36,6 +37,27 @@ Ghost.prototype.reset = function(){
     }.bind(this), 1000 * this.idleTime);
 };
 
+Ghost.prototype.hasBeenEaten = function(){
+    this.isEaten = 1;
+    this.image.src = "resources/img/eyes.png";
+    console.log(this.Ghost);
+    this.setMode("backHome");
+    console.log(this.target);
+    console.log(this.getMode());
+    console.log(this.getPositionX());
+    if(this.getPositionX == 9 && this.getPositionY == 8){
+        console.log("TEUUUUUB");
+        this.isEaten = 0;
+        this.image.src = this.imageSrcGhost;
+    }
+   // this.eatable = false;
+  //  if(this.getX() == this.getStartX() && this.getY() == this.getStartY()){
+    //    this.reset();
+    //}
+
+};
+
+
 Ghost.prototype.makeEatable = function(){
     this.image.src = "resources/img/eatable_ghost.png";
     this.eatable = true;
@@ -56,16 +78,20 @@ Ghost.prototype.goFrightened = function(){
 
     this.setMode("frightened");
     this.image.src = "resources/img/eatable_ghost.png";
-
-    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 8000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 8500);
-    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 9000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 9500);
-    setTimeout(function(){
-        this.makeNotEatable();
-        this.setMode(lastMode);
-        runModeChanger();
-    }.bind(this), 10000);
+    if(this.isEaten == 0){
+        setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 8000);
+        setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 8500);
+        setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 9000);
+        setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 9500);
+        setTimeout(function(){
+            this.makeNotEatable();
+            this.setMode(lastMode);
+            runModeChanger();
+        }.bind(this), 10000);
+    }
+    else if(this.isEaten == 1){
+        this.setMode("backHome");
+    }
 };
 
 Ghost.prototype.getMode = function(){
