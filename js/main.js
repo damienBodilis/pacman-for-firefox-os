@@ -1,30 +1,34 @@
+var canvas = document.getElementById("menu");
 var selectValue = 1;
-//var optionsData = new OptionStorage(); //l'objet qui set les options d�finies par le joueur.
+var optionsData = new OptionStorage(); //l'objet qui set les options définies par le joueur.
 var xhr;
-var nomFichierVariables = 'resources/variables.json';
 
-//d�but de d�finition des variables
-// Cr�ation de l'objet XmlHttpRequest
-xhr = getXMLHttpRequest();
-// Chargement du fichier
-xhr.open("GET", nomFichierVariables, false);
-xhr.overrideMimeType("application/json");
-xhr.send(null);
-if(xhr.readyState != 4 || (xhr.status != 200 && xhr.status != 0)) // Code == 0 en local
-throw new Error("Impossible to load \"" + nomFichierVariables + "\" (code HTTP : " + xhr.status + ").");
-var varJsonProperties = xhr.responseText;
-	
-// Analyse des donn�es
-var varProperties = JSON.parse(varJsonProperties);
-
+var varProperties = 
+	{
+	  "beginningMusic": "resources/sounds/pacman_beginning.wav",
+	  "menuMusic": "resources/sounds/pacman_menu_music.mp3",
+	  "menuBeepSound": "resources/sounds/pacman_menu_beep.ogg",
+	  "beepEnter": "resources/sounds/pacman_menu_next.ogg",
+	  "beepCancel": "resources/sounds/pacman_menu_previous.ogg",
+	  "siren": "resources/sounds/pacman_siren.mp3",
+	  "chomp": "resources/sounds/pacman_chomp.mp3",
+	  "coin": "resources/sounds/pacman_coinfull.mp3",
+	  "wail": "resources/sounds/pacman_wail.mp3",
+	  "eatFruit": "resources/sounds/pacman_eatfruit.wav",
+	  "eatGhost": "resources/sounds/pacman_eatghost.wav",
+	  "victoriousSong": "resources/sounds/pacman_winner.ogg",
+	  "loseSong": "resources/sounds/pacman_death.wav",
+	  "mainTitre" : "resources/img/menu_hand_title.png",
+	  "wallpaperTitre" : "resources/img/title_bombers.png",
+	  "backgroundEnd": "resources/img/backgroundEnd.png",
+	  "winnerPersonnage": "resources/img/winner_pacman.png"
+	}
 
 //IMAGES du menu
 var pacman = new Image();
 pacman.src = varProperties.mainTitre;
 var wallpaper = new Image();
 wallpaper.src = varProperties.wallpaperTitre;
-var backgroundEnd = new Image();
-backgroundEnd.src = varProperties.backgroundEnd;
 var winnerPersonnage = new Image();
 winnerPersonnage.src = varProperties.winnerPersonnage;
 //==============
@@ -57,12 +61,78 @@ victoriousSong.load();
 var loseSong = new Audio(varProperties.loseSong);
 loseSong.load();
 
-beginningMusic.play();
-//beepMenu.play();
-//beepMenu.play();
-//beepEnter.play();
-//beepCancel.play();
-//victoriousSong.play();
-//loseSong.play();
-//chomp.play();
-//eatFruit.play();
+beginningMusic.pause();
+siren.pause();
+
+//==============
+
+// Handle keyboard controls
+var keysDown = {};
+
+addEventListener("keyup", function (e) {
+	delete keysDown[e.keyCode];
+}, false);
+
+addEventListener("keydown", function (e) {
+	if (keysDown[e.keyCode] !== false) {
+		keysDown[e.keyCode] = true;
+	}
+}, false);
+
+var element = document.createElement('input');
+	element.setAttribute("type", "text");
+	element.setAttribute("id", "inputPlayer");
+	document.body.appendChild(element);
+
+
+var menu = new Menu();
+var game;
+var options;
+var scores;
+
+var currentObject = menu;
+
+var requestAnimFrame = (function() {
+	return window.requestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		function (callback) {
+			window.setTimeout(callback, 33.0);
+		};
+})();
+
+window.requestAnimationFrame = requestAnimFrame;
+
+//var fps = 0;
+//var now;
+//var lastUpdate = (new Date)*1 -1;
+//plus la valeur est grande, moins le FPS sera affecté par des changements rapides
+//
+
+var timeGlobal = new Date().getTime();
+//var fpsFilter = 50;
+var cptFrame = 0;
+//Step renvoit une valeur timestamp renseignant à quel moment depuis "epoch" où il a été lancé
+function step() {
+  
+	var progress =  (new Date().getTime()) - timeGlobal;//on calcule le temps écoulé entre les deux moments
+  	cptFrame += progress;
+  	if(cptFrame > 33){
+		currentObject.update(progress);
+		cptFrame -= 33;
+
+	//var thisFrameFPS = 1000 / ((now=new Date()) - lastUpdate);
+	//fps += (thisFrameFPS - fps) / fpsFilter;
+	//lastUpdate = now;
+	//console.log(fps.toFixed(1) + "fps");
+
+	}	
+  
+	timeGlobal = new Date().getTime();
+	requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+
+

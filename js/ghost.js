@@ -39,11 +39,20 @@ Ghost.prototype.reset = function(){
 Ghost.prototype.makeEatable = function(){
     this.image.src = "resources/img/eatable_ghost.png";
     this.eatable = true;
+	siren.loop=false;
+	siren.pause();
+	wail.play();
 };
 
 Ghost.prototype.makeNotEatable = function(){
     this.image.src = this.imageSrcGhost;
     this.eatable = false;
+	//if(beginningMusic.played()==false){
+		siren.volume = 0.1;
+	//	siren.play();
+	//	siren.loop=true;
+	//	console.log("toto");
+	//}
 };
 
 Ghost.prototype.goFrightened = function(){
@@ -57,15 +66,15 @@ Ghost.prototype.goFrightened = function(){
     this.setMode("frightened");
     this.image.src = "resources/img/eatable_ghost.png";
 
-    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 8000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 8500);
-    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 9000);
-    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 9500);
+    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 3500);
+    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 4000);
+    setTimeout(function(){ if(this.eatable) this.image.src = this.imageSrcGhost; }.bind(this), 4500);
+    setTimeout(function(){ if(this.eatable) this.image.src = "resources/img/eatable_ghost.png"; }.bind(this), 5000);
     setTimeout(function(){
         this.makeNotEatable();
         this.setMode(lastMode);
         runModeChanger();
-    }.bind(this), 10000);
+    }.bind(this), 5500);
 };
 
 Ghost.prototype.getMode = function(){

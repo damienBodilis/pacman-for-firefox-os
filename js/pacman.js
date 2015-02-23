@@ -62,7 +62,9 @@ Pacman.prototype.eatBigFood = function(){
 Pacman.prototype.eatLittleFood = function(){
     //map.end--;
     this.score += 10;
-	chomp.play();
+	coin.play();
+
+	
 };
 
 Pacman.prototype.eatFruit = function(){

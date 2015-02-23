@@ -4,6 +4,7 @@ var difficulte = 3;
 // For time
 var lastTimeEatable, newTime, lastTime;
 
+context== canvas.getContext('2d');
 
 // Load event
 window.addEventListener('load', function () {
@@ -19,10 +20,6 @@ window.addEventListener('load', function () {
         console.assert("Context of cancas is impossible of recovery");
         return;
     }
-
-    // Set of canvas size
-    canvas.width = 305;
-    canvas.height = 480;
 
     // add events listener for keyboard
     window.addEventListener("keydown", pacmanDirection, true);
@@ -49,8 +46,37 @@ window.addEventListener('load', function () {
     // launch appli
     requestAnimationFrame(step);
 
+	var stretch_ui_menu = stretch_ui("menu");
+	var stretch_ui_grid = stretch_ui("grid");
+	
+	stretch_ui_menu();
+	stretch_ui_grid();
+	
+	
+	$(window).on('resize', stretch_ui_grid);
+	
+	var menu = new Menu();
+	$(window).on('resize', stretch_ui_menu);
+	menu.update();
+	
+}, true);
 
-}, false);
+function stretch_ui(name) {
+	return function () {
+		var native_width = 305;
+		var native_height = 480;
+		
+		var width = $('html').width();
+		var height = $('html').height();
+		
+		var canvas = document.getElementById(name);
+		var context = canvas.getContext('2d');
+		
+		canvas.width = width;
+		canvas.height = height;
+		context.scale(width/native_width, height/native_height);
+	};
+}
 
 /* --- List of functions --- */
 
@@ -127,7 +153,7 @@ function pauseModeChanger(){
 
 
 // animation function
-var fps = 40;
+var fps = 60;
 var now, delta;
 var then = Date.now();
 var interval = 1000/fps;
@@ -167,6 +193,8 @@ function animate() {
     // Loose game
     // Draw life of pacman
     document.getElementById('life').innerHTML = "0";
+	siren.pause();
+	siren.loop=false;
     alert("You loose !");
     window.location.reload();
   } else {

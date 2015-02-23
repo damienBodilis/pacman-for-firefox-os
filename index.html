@@ -9,20 +9,36 @@
   <!--  <script src="canvas.js"></script> -->
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/jquery.hammer-full.min.js"></script>
+			<!-- Pour empecher le resize de la fenetre -->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
-	<canvas id="grid">
+	<canvas id="menu">
 		Message pour les navigateurs ne supportant pas encore canvas.
 	</canvas>
-	<h2>Score <span id="score">0</span></h2>
-	<h2 class="life">Life <span id="life">0</span></h2>
-	<button id="restart" class="myButton" onclick="javascript:window.location.reload();">Restart</button><button id="pause" class="myButton" onclick="javascript:window.setTimeout(alert("pause"), 3000);;">pause</button><button id="exit" class="myButton" onclick="javascript:window.close();">Exit</button>
+	<canvas id="grid" style="display: none;">
+		Message pour les navigateurs ne supportant pas encore canvas.
+	</canvas>
+	
+	<div id="buttons">
+		<div id="scores">
+			<h2>Score <span id="score">0</span></h2>
+			<h2 class="life">Life <span id="life">0</span></h2>
+		</div>
+		<button id="restart" class="myButton" onclick="javascript:window.location.reload();">Restart</button><button id="pause" class="myButton" onclick="javascript:window.setTimeout(alert("pause"), 3000);;">pause</button><button id="exit" class="myButton" onclick="javascript:window.close();">Exit</button>
+	</div>
+	
+	
+	<script type="text/javascript" src="js/utils/binder.js"></script>
+	<script type="text/javascript" src="js/storage/optionStorage.js"></script>
 
+	<script type="text/javascript" src="js/utils/canvas.js"></script>
+	<script type="text/javascript" src="js/utils/keys.js" ></script>
     <script type="text/javascript" src="js/menu/menu.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/menu/options.js"></script>
     <script type="text/javascript" src="js/menu/scores.js"></script>
     <script type="text/javascript" src="js/utils/XMLHttpRequest.js"></script>
-    <script src="js/main.js"></script>
 	<script src="js/engine.js"></script>
 	<script src="js/creature.js"></script>
 	<script src="js/pacman.js"></script>
