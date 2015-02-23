@@ -43,8 +43,7 @@ window.addEventListener('load', function () {
     lastTime = new Date();
     lastTime = lastTime.getTime();
 
-    // launch appli
-    requestAnimationFrame(step);
+    
 
 	var stretch_ui_menu = stretch_ui("menu");
 	var stretch_ui_grid = stretch_ui("grid");
@@ -54,10 +53,14 @@ window.addEventListener('load', function () {
 	
 	
 	$(window).on('resize', stretch_ui_grid);
-	
-	var menu = new Menu();
 	$(window).on('resize', stretch_ui_menu);
+	var menu = new Menu();
+	
 	menu.update();
+	//window.location.repaint();
+	
+	// launch appli
+    requestAnimationFrame(step);
 	
 }, true);
 
@@ -174,9 +177,8 @@ function step(){
 function animate() {
   newTime = new Date();
   newTime = newTime.getTime();
-
+  
   context.clearRect(0, 0, canvas.width, canvas.height);
-
   map.draw();
   pacman.draw();
 
