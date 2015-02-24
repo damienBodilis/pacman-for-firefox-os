@@ -1,6 +1,6 @@
 /* --- Init global variable -- */
 var canvas, context;
-var difficulte = 3;
+var difficulte = 1;
 // For time
 var lastTimeEatable, newTime, lastTime;
 

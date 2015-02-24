@@ -60,7 +60,7 @@ Pacman.prototype.eatBigFood = function(){
 };
 
 Pacman.prototype.eatLittleFood = function(){
-    //map.end--;
+    map.end--;
     this.score += 10;
 	coin.play();
 

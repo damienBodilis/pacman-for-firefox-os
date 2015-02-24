@@ -1,4 +1,4 @@
-var level = 2;
+var level = 3;
 if(level == 1){
     var map = {
         lines: 22,
@@ -181,7 +181,7 @@ else if(level == 2){
         littleFoodSize: 2,
         bigFoodRadius: 5,
         bigFoodPosition: 1,
-        end: 152,
+        end: 153,
         level: 1,
         fruitImage: new Image(),
         grid: GenerateLevel2(),
@@ -355,7 +355,7 @@ else if(level == 3){
         littleFoodSize: 2,
         bigFoodRadius: 5,
         bigFoodPosition: 1,
-        end: 152,
+        end: 163,
         level: 1,
         fruitImage: new Image(),
         grid: GenerateLevel3(),
