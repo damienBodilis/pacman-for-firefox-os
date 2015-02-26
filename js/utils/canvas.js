@@ -24,14 +24,21 @@ function stretch() {
 	metrics.height = document.body.offsetHeight;
 	canvas.style.width = metrics.cwidth() + 'px';
 	canvas.style.height = metrics.cheight() + 'px';
+	console.log("stretch");
 }
 
-stretch();
-window.addEventListener('resize', stretch, false);
-
+/*
 function adaptCoords(x, y){
 	return {
 		x : canvas.width * x /metrics.width,
 		y : canvas.height * y /metrics.height
+	};
+}
+*/
+
+function adaptCoords(x, y){
+	return {
+		x : x / canvas.width * 100,
+		y : y / canvas.height * 100
 	};
 }

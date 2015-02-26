@@ -1,3 +1,4 @@
+var isMenuOn = true;
 var canvas = document.getElementById("menu");
 var selectValue = 1;
 var optionsData = new OptionStorage(); //l'objet qui set les options définies par le joueur.
@@ -7,7 +8,7 @@ var varProperties =
 	{
 	  "beginningMusic": "resources/sounds/pacman_beginning.wav",
 	  "menuMusic": "resources/sounds/pacman_menu_music.mp3",
-	  "menuBeepSound": "resources/sounds/pacman_menu_beep.ogg",
+	  "beepMenu": "resources/sounds/pacman_menu_beep.ogg",
 	  "beepEnter": "resources/sounds/pacman_menu_next.ogg",
 	  "beepCancel": "resources/sounds/pacman_menu_previous.ogg",
 	  "siren": "resources/sounds/pacman_siren.mp3",
@@ -25,8 +26,8 @@ var varProperties =
 	}
 
 //IMAGES du menu
-var pacman = new Image();
-pacman.src = varProperties.mainTitre;
+var pacmanHand = new Image();
+pacmanHand.src = varProperties.mainTitre;
 var wallpaper = new Image();
 wallpaper.src = varProperties.wallpaperTitre;
 var winnerPersonnage = new Image();
@@ -38,8 +39,8 @@ var beginningMusic = new Audio(varProperties.beginningMusic);
 beginningMusic.load();
 var menuMusic = new Audio(varProperties.menuMusic);
 menuMusic.load();
-var menuBeepSound = new Audio(varProperties.menuBeepSound);
-menuBeepSound.load();
+var beepMenu = new Audio(varProperties.beepMenu);
+beepMenu.load();
 var beepEnter = new Audio(varProperties.beepEnter); //beepCancel
 beepEnter.load();
 var beepCancel = new Audio(varProperties.beepCancel); //beepCancel
@@ -91,20 +92,6 @@ var options;
 var scores;
 
 var currentObject = menu;
-
-var requestAnimFrame = (function() {
-	return window.requestAnimationFrame ||
-		window.webkitRequestAnimationFrame ||
-		window.mozRequestAnimationFrame ||
-		window.oRequestAnimationFrame ||
-		window.msRequestAnimationFrame ||
-		function (callback) {
-			window.setTimeout(callback, 33.0);
-		};
-})();
-
-window.requestAnimationFrame = requestAnimFrame;
-
 //var fps = 0;
 //var now;
 //var lastUpdate = (new Date)*1 -1;
@@ -115,8 +102,7 @@ var timeGlobal = new Date().getTime();
 //var fpsFilter = 50;
 var cptFrame = 0;
 //Step renvoit une valeur timestamp renseignant à quel moment depuis "epoch" où il a été lancé
-function step() {
-  
+function menuStep() {
 	var progress =  (new Date().getTime()) - timeGlobal;//on calcule le temps écoulé entre les deux moments
   	cptFrame += progress;
   	if(cptFrame > 33){
@@ -133,6 +119,5 @@ function step() {
 	timeGlobal = new Date().getTime();
 	requestAnimationFrame(step);
 }
-requestAnimationFrame(step);
 
 

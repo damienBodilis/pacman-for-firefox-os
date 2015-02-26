@@ -1,22 +1,22 @@
-var menuSoundPlayed = {"game":false,"scores":false,"options":false,"credit":false};
+var menuSoundPlayed = {"game":false,"levels":false,"scores":false,"options":false};
 function Menu() {
    	menuMusic.loop = true;
   // 	menuMusic.volume=0.4;
 	theMenu = this;
 	this.bind();
-	this.taille = 30;
+	this.taille = 10;
 	this.hWallpaper = 800;
 
 	if(optionsData.loadSound() === "No"){
 		menuMusic.pause();
 	}else {
-		//menuMusic.play();
+		menuMusic.play();
 	}
 
 	menuSoundPlayed.game = true;
+	menuSoundPlayed.levels = false;
 	menuSoundPlayed.scores = false;
 	menuSoundPlayed.options = false;
-	menuSoundPlayed.credit = false;
 }
 
 Menu.prototype.bind = function() {
@@ -40,7 +40,7 @@ Menu.prototype.launchGame = function () {
 	$('#menu').css('display', 'none');
 	$('#grid').css('display', 'block');
 	$('#buttons').css('display', 'block');
-	
+	isMenuOn = false;
 }
 
 Menu.prototype.options = function () {
@@ -53,7 +53,7 @@ Menu.prototype.options = function () {
 
 Menu.prototype.scores = function () {
 	this.unbind();
-	scores = new Scores();
+	//scores = new Scores();
 	
 	currentObject = scores;
 
@@ -64,61 +64,69 @@ Menu.prototype.exitGame = function () {
 	this.bind();
 	game = undefined;
 	
-	screenWidth = 960;
-	screenHeight = 640;
+	screenWidth = 305;
+	screenHeight = 480;
 	canvas.width = screenWidth;
 	canvas.height = screenHeight;
 
 	
 	currentObject = menu;
-	
+	isMenuOn = true;
+}
+
+function between(value, min, max) {
+	return min < value && value < max;
 }
 
 
 Menu.prototype.mouseMouve = function(event){
 
 	var computed  = adaptCoords(event.clientX, event.clientY);
-
-	if (Math.round(computed.y) >= 175 && Math.round(computed.y) <= 200 ){
+	
+	if (between(computed.y, 30, 45)){
 		selectValue = 1;
 		if(menuSoundPlayed.game === false){
 			beepMenu.play();
+			console.log("1");
 			menuSoundPlayed.game = true;
-			menuSoundPlayed.multijoueur = false;
+			menuSoundPlayed.levels = false;
 			menuSoundPlayed.scores = false;
 			menuSoundPlayed.options = false;
 		}
 		
 	}
 	
-	if (Math.round(computed.y) >= 200 && Math.round(computed.y) <= 215 ){
+	if (between(computed.y, 50, 60)){
 		selectValue = 2;
-		if(menuSoundPlayed.multijoueur === false){
+		if(menuSoundPlayed.levels === false){
 			beepMenu.play();
+			console.log("2");
 			menuSoundPlayed.game = false;
-			menuSoundPlayed.multijoueur = true;
+			menuSoundPlayed.levels = true;
 			menuSoundPlayed.scores = false;
 			menuSoundPlayed.options = false;
 		}
 	}
 	
-	if (Math.round(computed.y) >= 215 && Math.round(computed.y) <= 455 ){
+	if (between(computed.y, 65, 73)){
 		selectValue = 3;
 		if(menuSoundPlayed.scores === false){
 			beepMenu.play();
+			console.log("3");
 			menuSoundPlayed.game = false;
-			menuSoundPlayed.multijoueur = false;
+			menuSoundPlayed.levels = false;
 			menuSoundPlayed.scores = true;
 			menuSoundPlayed.options = false;
 		}
 	}
 	
-	if (Math.round(computed.y) >= 455 && Math.round(computed.y) <= 575 ){
+	if (between(computed.y, 75, 85)){
 		selectValue = 4;
 		if(menuSoundPlayed.options === false){
 			beepMenu.play();
+			console.log("4");
 			menuSoundPlayed.game = false;
-			menuSoundPlayed.multijoueur = false;
+			menuSoundPlayed.levels = false;
 			menuSoundPlayed.scores = false;
 			menuSoundPlayed.options = true;
 		}
@@ -132,30 +140,31 @@ Menu.prototype.updateByClick = function (event){
 	var computed  = adaptCoords(event.clientX, event.clientY);
 	
 	menuSoundPlayed.game = false;
+	menuSoundPlayed.levels = false;
 	menuSoundPlayed.scores = false;
 	menuSoundPlayed.options = false;
-	menuSoundPlayed.credit = false;
 	
-	if (Math.round(computed.y) >= 175 && Math.round(computed.y) <= 315 ){
+	
+	if (between(computed.y, 30, 45)){
 
 		beepEnter.play();
 		this.launchGame();
 
 	}
 	
-	if (Math.round(computed.y) >= 315 && Math.round(computed.y) <= 383 ){
+	if (between(computed.y, 50, 60)){
 		beepEnter.play();
 		//this.toto();
 		this.launchGame();
 	}
 	
-	if (Math.round(computed.y) >= 383 && Math.round(computed.y) <= 455 ){
+	if (between(computed.y, 65, 73)){
 		beepEnter.play();
 		//this.scores();
 		this.launchGame();
 	}
 	
-	if (Math.round(computed.y) >= 455 && Math.round(computed.y) <= 575 ){
+	if (between(computed.y, 75, 85)){
 		beepEnter.play();
 		//this.options();
 		this.launchGame();
@@ -195,59 +204,66 @@ Menu.prototype.update = function () {
 	if (keysDown[keys.space]) { // Player holding space
 		if(selectValue === 1){
 			beepEnter.play();
+			console.log("1-keyboardOK");
 			this.launchGame();
 		}
 		
 		if(selectValue === 2){
 			beepEnter.play();
-			//this.multiplayer();
+			console.log("2-keyboardOK");
+			this.levels();
 		}
 		
 		if(selectValue === 3){
 			beepEnter.play();
-			//this.scores();
+			console.log("3-keyboardOK");
+			this.scores();
 		}
 		
 		if(selectValue === 4){
 			beepEnter.play();
-			//this.options();
+			console.log("4-keyboardOK");
+			this.options();
 		}
 		
 		keysDown[keys.space] = false;
 	}
-
 	//gestion du son au clavier
 	switch(selectValue) {
 		case 1: if(menuSoundPlayed.game === false){
-					menuBeepSound.play();
+					beepMenu.play();
+					console.log("1-keyboardPassage");
 					menuSoundPlayed.game = true;
+					menuSoundPlayed.levels = false;
 					menuSoundPlayed.scores = false;
 					menuSoundPlayed.options = false;
-					menuSoundPlayed.credit = false;
 				}
 				break;
-		case 2: if(menuSoundPlayed.scores === false){
-					menuBeepSound.play();
+		case 2: if(menuSoundPlayed.levels === false){
+					beepMenu.play();
+					console.log("2-keyboardPassage");
 					menuSoundPlayed.game = false;
-					menuSoundPlayed.scores = true;
+					menuSoundPlayed.levels = true;
+					menuSoundPlayed.scores = false;
 					menuSoundPlayed.options = false;
-					menuSoundPlayed.credit = false;
 				}
 				break;	
-		case 3: if(menuSoundPlayed.options === false){
-					menuBeepSound.play();
+		case 3: if(menuSoundPlayed.scores === false){
+					beepMenu.play();
+					console.log("3-keyboardPassage");
 					menuSoundPlayed.game = false;
-					menuSoundPlayed.scores = false;
-					menuSoundPlayed.options = true;
-					menuSoundPlayed.credit = false;
+					menuSoundPlayed.levels = false;
+					menuSoundPlayed.scores = true;
+					menuSoundPlayed.options = false;
 				}
 				break;
-		case 4: if(menuSoundPlayed.credit === false){
-					menuBeepSound.play();
+		case 4: if(menuSoundPlayed.options === false){
+					beepMenu.play();
+					console.log("4-keyboardPassage");
 					menuSoundPlayed.game = false;
+					menuSoundPlayed.levels = false;
 					menuSoundPlayed.scores = false;
-					menuSoundPlayed.options = false;
-					menuSoundPlayed.credit = true;
+					menuSoundPlayed.options = true;
 				}
 				break;					
 	}
@@ -257,65 +273,80 @@ Menu.prototype.update = function () {
 
 Menu.prototype.render = function () {
 	//Création du menu
-	ctx.fillRect(0,400,screenWidth,screenHeight);
+//	ctx.fillRect(0,400,screenWidth,screenHeight);
 	ctx.fillStyle="black";
-	ctx.fillRect(0,0,screenWidth,400);
+	ctx.fillRect(0,0,screenWidth,screenHeight);
 	if (this.hWallpaper>170) {
 		this.hWallpaper-=15;
-		}
+	}
 	//ctx.drawImage(wallpaper, 0,this.hWallpaper+5, canvas.width, canvas.height-170 );
-	if (this.taille<90) {
+	if (this.taille<30) {
 		this.taille++;
 	}
-	ctx.font = this.taille*2+"px Pacman";
+	ctx.font = this.taille+"px Pacman";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "top";
 	ctx.fillStyle = "gray";
-	ctx.fillText("Pacman", eval(screenWidth/2)+5 ,60 +5);
+	ctx.fillText("Pacman", (screenWidth/2)+5 ,60 +5);
 	ctx.fillStyle = "white";
-	ctx.fillText("Pacman", eval(screenWidth/2) ,60);
+	ctx.fillText("Pacman", screenWidth/2 ,60);
 	
-	//ctx.font = this.taille-15+"px Pacman";
+	ctx.font = this.taille-15+"px Pacman";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "center";
 	
+	var deltaX = Math.random() * 5;
+	var deltaY = Math.random() * 5;
+	
 	switch(selectValue) {
-		case 1: //ctx.drawImage(pacman,  screenWidth/4+60 , 260);
+		case 1: ctx.fillStyle = "yellow";
 				ctx.font = this.taille-5+"px Pacman";
+				ctx.fillText(" New Game ", screenWidth/2 + deltaX,180 + deltaY);
+				ctx.fillStyle = "white";
+				ctx.font = this.taille-15+"px Pacman";
+				ctx.fillText(" Levels ", screenWidth/2,250);
+				ctx.fillText(" Scores ", screenWidth/2,320);
+				ctx.fillText(" Options ", screenWidth/2,390);
+				break;
+				
+		case 2: ctx.font = this.taille-15+"px Pacman";
 				ctx.fillText(" New Game ", screenWidth/2,180);
-				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" Scores ", screenWidth/2,250);
-				ctx.fillText(" Options ", screenWidth/2,320);
-				ctx.fillText(" Credit ", screenWidth/2,390);
-				break;
-		case 2: //ctx.drawImage(pacman,  screenWidth/4-18 , 330);
-				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" New Game ", screenWidth/2,250);
+				ctx.fillStyle = "yellow";
 				ctx.font = this.taille-5+"px Pacman";
-				ctx.fillText(" Scores ", screenWidth/2,320);
+				ctx.fillText(" Levels ", screenWidth/2 + deltaX,250 + deltaY);
+				ctx.fillStyle = "white";
 				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" Options ", screenWidth/2,390);
-				ctx.fillText(" Credit ", screenWidth/2,460);
-				break;
-		case 3: //ctx.drawImage(pacman,  screenWidth/3 , 400);
-				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" New Game ", screenWidth/2,250);
-				ctx.fillText(" Scores ", screenWidth/2,320);
-				ctx.font = this.taille-5+"px Pacman";
-				ctx.fillText(" Options ", screenWidth/2,390);
-				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" Credit ", screenWidth/2,460);
-				break;
-		case 4: //ctx.drawImage(pacman,  screenWidth/3-20 , 470);
-				ctx.font = this.taille-15+"px Pacman";
-				ctx.fillText(" New Game ", screenWidth/2,250);
 				ctx.fillText(" Scores ", screenWidth/2,320);
 				ctx.fillText(" Options ", screenWidth/2,390);
+				break;
+				
+		case 3: ctx.font = this.taille-15+"px Pacman";
+				ctx.fillText(" New Game ", screenWidth/2,180);
+				ctx.fillText(" Levels ", screenWidth/2,250);
+				ctx.fillStyle = "yellow";
 				ctx.font = this.taille-5+"px Pacman";
-				ctx.fillText(" Credit ", screenWidth/2,460);
+				ctx.fillText(" Scores ", screenWidth/2 + deltaX,320 + deltaY);
+				ctx.fillStyle = "white";
 				ctx.font = this.taille-15+"px Pacman";
+				ctx.fillText(" Options ", screenWidth/2,390);
+				break;
+				
+		case 4: ctx.font = this.taille-15+"px Pacman";
+				ctx.fillText(" New Game ", screenWidth/2,180);
+				ctx.fillText(" Levels ", screenWidth/2,250);
+				ctx.fillText(" Scores ", screenWidth/2,320);
+				ctx.fillStyle = "yellow";
+				ctx.font = this.taille-5+"px Pacman";
+				ctx.fillText(" Options ", screenWidth/2 + deltaX,390 + deltaY);
+				ctx.font = this.taille-15+"px Pacman";
+				ctx.fillStyle = "white";
 				break;						
 	}
+	
+	ctx.font = "10px Pacman";
+	ctx.textAlign = "center";
+	ctx.textBaseline = "center";
+	ctx.fillText("Credit : Booba , Rohff , Kaaris", screenWidth/2 ,440);
 	
 	
 }

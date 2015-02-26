@@ -95,5 +95,5 @@ div#buttons button {
 
 @font-face {
 	font-family: Pacman;
-	src: url('../resources/fonts/bm.ttf') format('truetype');
+	src: url('../resources/fonts/pacman.ttf') format('truetype');
 }

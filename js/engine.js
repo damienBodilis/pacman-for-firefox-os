@@ -51,13 +51,17 @@ window.addEventListener('load', function () {
 	stretch_ui_menu();
 	stretch_ui_grid();
 	
-	
+	$(window).on('resize', stretch_ui_menu);	
 	$(window).on('resize', stretch_ui_grid);
-	$(window).on('resize', stretch_ui_menu);
+
 	var menu = new Menu();
-	
 	menu.update();
-	//window.location.repaint();
+	
+//	var scores= new Scores();
+//	scores.update();
+
+//	var options= new Options();
+//	options.update();
 	
 	// launch appli
     requestAnimationFrame(step);
@@ -161,9 +165,15 @@ var now, delta;
 var then = Date.now();
 var interval = 1000/fps;
 
-function step(){
-  window.requestAnimationFrame(step);
+function step() {
+	if(isMenuOn) {
+		menuStep();
+	} else {
+		gameStep();
+	}
+}
 
+function gameStep() {
     now = Date.now();
     delta = now - then;
 
@@ -172,6 +182,7 @@ function step(){
 
         animate();
     }
+	window.requestAnimationFrame(step);
 }
 
 function animate() {

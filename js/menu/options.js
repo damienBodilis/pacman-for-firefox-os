@@ -325,12 +325,12 @@ Options.prototype.render = function () {
 	//Création du menu
 	ctx.fillStyle="rgb(52,173,98)";
 	ctx.fillRect(0,400,screenWidth,screenHeight);
-	ctx.fillStyle="lightblue";
+	ctx.fillStyle="black";
 	ctx.fillRect(0,0,screenWidth,400);
 	if (this.hWallpaper>180) {
 		this.hWallpaper-=7;
 		}
-	ctx.drawImage(wallpaper, 0,this.hWallpaper+5, canvas.width, canvas.height-170 );
+	//ctx.drawImage(wallpaper, 0,this.hWallpaper+5, canvas.width, canvas.height-170 );
 	if (this.taille<90) {
 		this.taille++;
 	}
@@ -347,7 +347,7 @@ Options.prototype.render = function () {
 	ctx.textBaseline = "center";
 	
 	switch(optionSelected) {
-		case 1: ctx.drawImage(pacman,  screenWidth/4+10 , 260);
+		case 1: //ctx.drawImage(pacman,  screenWidth/4+10 , 260);
 				ctx.font = this.taille-35+"px Pacman";
 				ctx.fillText(" Sound : "+optionsData.loadSound()+"", screenWidth/2,250);
 				ctx.font = this.taille-60+"px Pacman";
@@ -355,7 +355,7 @@ Options.prototype.render = function () {
 				ctx.fillText(" Color : "+colorTab[optionsData.loadColor()]+"", screenWidth/2,390);
 				ctx.fillText(" Exit ", screenWidth/2,460);
 				break;
-		case 2: ctx.drawImage(pacman,  screenWidth/10 , 330);
+		case 2: //ctx.drawImage(pacman,  screenWidth/10 , 330);
 				ctx.font = this.taille-60+"px Pacman";
 				ctx.fillText(" Sound : "+optionsData.loadSound()+"", screenWidth/2,250);
 				ctx.font = this.taille-35+"px Pacman";
@@ -364,7 +364,7 @@ Options.prototype.render = function () {
 				ctx.fillText(" Color : "+colorTab[optionsData.loadColor()]+"", screenWidth/2,390);
 				ctx.fillText(" Exit ", screenWidth/2,460);
 				break;	
-		case 3: ctx.drawImage(pacman,  screenWidth/4 - 20 , 400);
+		case 3: //ctx.drawImage(pacman,  screenWidth/4 - 20 , 400);
 				ctx.font = this.taille-60+"px Pacman";
 				ctx.fillText(" Sound : "+optionsData.loadSound()+"", screenWidth/2,250);
 				
@@ -374,7 +374,7 @@ Options.prototype.render = function () {
 				ctx.font = this.taille-60+"px Pacman";
 				ctx.fillText(" Exit ", screenWidth/2,460);
 				break;
-		case 4: ctx.drawImage(pacman,  screenWidth/3 +50 , 470);
+		case 4: //ctx.drawImage(pacman,  screenWidth/3 +50 , 470);
 				ctx.font = this.taille-60+"px Pacman";
 				ctx.fillText(" Sound : "+optionsData.loadSound()+"", screenWidth/2,250);
 				ctx.fillText(" Nickname : <"+optionsData.loadNickName()+">", screenWidth/2,320);
