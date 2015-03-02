@@ -37,7 +37,7 @@ div#scores {
 }
 
 div#buttons button {
-	width: 33.3333%;
+	width: 100%;
 }
 
 .myButton {
@@ -91,6 +91,18 @@ div#buttons button {
 #menu {
 	position: absolute;
 	top: 0px;
+}
+
+#inputPlayer {
+	position : absolute;
+	z-index: 999;
+	background-color: yellow;
+	top: 100px;
+	display : none;
+	color: black;
+	border : none;
+	font-family: Pacman;
+	font-size: 20px;
 }
 
 @font-face {

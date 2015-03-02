@@ -1,4 +1,4 @@
-var COULEUR = {"BLANC" : 0, "NOIR" : 1, "ROUGE" : 2, "BLEU"   : 3, "VERT" : 4 };
+var DIFFICULTE = {"EASY" : 0, "NORMAL" : 1, "HARD" : 2};
 function OptionStorage (){
 	if (localStorage) {
 	  //on set les variables par dÈfaut
@@ -10,8 +10,8 @@ function OptionStorage (){
 			localStorage['nickname'] = "Player"
 		}
 
-		if( localStorage['color'] === undefined){
-			localStorage['color'] = COULEUR.BLANC;
+		if( localStorage['difficulty'] === undefined){
+			localStorage['difficulty'] = DIFFICULTE.NORMAL;
 		}
 
 		if( localStorage['scores'] === undefined){
@@ -32,7 +32,7 @@ function OptionStorage (){
 		
 
 	} else {
-	  alert('votre système ne supporte pas locale storage.');
+	  alert('votre systËème ne supporte pas locale storage.');
 	  currentObject = menu;
 	  optionsData = undefined;
 	}
@@ -58,16 +58,19 @@ OptionStorage.prototype.loadNickName = function (){
 
 }
 
-OptionStorage.prototype.saveColor = function (value){
-	localStorage['color'] = value;
+
+OptionStorage.prototype.saveDifficulty = function (value){
+	localStorage['difficulty'] = value;
 
 }
 
-OptionStorage.prototype.loadColor = function (){
-	return localStorage['color'];
-
+OptionStorage.prototype.loadDifficulty = function (){
+	var difficulty = localStorage['difficulty'];
+	if (!isNaN(difficulty) && 0 <= difficulty && difficulty < 3) {
+		return difficulty;
+	}
+	return 0;
 }
-
 OptionStorage.prototype.saveScores = function (value){
 	localStorage['scores'] = JSON.stringify(value);
 

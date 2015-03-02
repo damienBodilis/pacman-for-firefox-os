@@ -39,20 +39,13 @@ Ghost.prototype.reset = function(){
 Ghost.prototype.makeEatable = function(){
     this.image.src = "resources/img/eatable_ghost.png";
     this.eatable = true;
-	siren.loop=false;
-	siren.pause();
+	wail.volume=0.4;
 	wail.play();
 };
 
 Ghost.prototype.makeNotEatable = function(){
     this.image.src = this.imageSrcGhost;
     this.eatable = false;
-	//if(beginningMusic.played()==false){
-		siren.volume = 0.1;
-	//	siren.play();
-	//	siren.loop=true;
-	//	console.log("toto");
-	//}
 };
 
 Ghost.prototype.goFrightened = function(){

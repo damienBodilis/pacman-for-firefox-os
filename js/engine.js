@@ -1,21 +1,18 @@
 /* --- Init global variable -- */
-var canvas, context;
+var gameCanvas, context;
 var difficulte = 1;
 // For time
 var lastTimeEatable, newTime, lastTime;
-
-context== canvas.getContext('2d');
-
 // Load event
 window.addEventListener('load', function () {
     // Recovery of canvas
-    canvas = document.getElementById('grid');
-    if (!canvas) {
-        console.assert("Canvas recovery is impossible");
+    gameCanvas = document.getElementById('grid');
+    if (!gameCanvas) {
+        consola.assert("Canvas recovery is impossible");
         return;
     }
     // Recovery of context
-    context = canvas.getContext('2d');
+    context = gameCanvas.getContext('2d');
     if (!context) {
         console.assert("Context of cancas is impossible of recovery");
         return;
@@ -57,12 +54,6 @@ window.addEventListener('load', function () {
 	var menu = new Menu();
 	menu.update();
 	
-//	var scores= new Scores();
-//	scores.update();
-
-//	var options= new Options();
-//	options.update();
-	
 	// launch appli
     requestAnimationFrame(step);
 	
@@ -94,7 +85,10 @@ var modeTimes = [{ time: 0, changeTo: "scatter"}];
 var modeChangeTimer = null;
 var modeChangeTimerStartTime = null;
 
+
 function runModeChanger(){
+	difficulte = optionsData.loadDifficulty();
+
     modeChangeTimerStartTime = new Date().getSeconds();
     modeChangeTimer = setTimeout(function(){
         for(var i = 0; i < ghostContainer.length; ++i){
@@ -108,6 +102,7 @@ function runModeChanger(){
             runModeChanger();
         }
         else if(difficulte == 1){
+		  console.log("EASY BITCH");
           modeTimes = [
           { time: 0, changeTo: "scatter"},
           { time: 7, changeTo: "scatter"},
@@ -120,6 +115,7 @@ function runModeChanger(){
           ];
         }
     		else if(difficulte == 2){
+			console.log("NORMAL BITCH");
     			modeTimes = [
     			{ time: 0, changeTo: "scatter"},
     			{ time: 7, changeTo: "chase"},
@@ -132,6 +128,7 @@ function runModeChanger(){
     			];
     		}
         else if(difficulte == 3){
+		console.log("HARD BITCH");
           modeTimes = [
           { time: 0, changeTo: "chase"},
           { time: 7, changeTo: "chase"},
@@ -189,7 +186,7 @@ function animate() {
   newTime = new Date();
   newTime = newTime.getTime();
   
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
   map.draw();
   pacman.draw();
 
@@ -206,8 +203,6 @@ function animate() {
     // Loose game
     // Draw life of pacman
     document.getElementById('life').innerHTML = "0";
-	siren.pause();
-	siren.loop=false;
     alert("You loose !");
     window.location.reload();
   } else {
@@ -215,10 +210,12 @@ function animate() {
       if ((pacman.getPositionX() == ghostContainer[i].getPositionX() && pacman.getPositionY() == ghostContainer[i].getPositionY())) {
         if(ghostContainer[i].eatable){
           pacman.score += 200;
+		  eatGhost.volume=0.4;
 		  eatGhost.play();
           ghostContainer[i].reset();
         } else {
           // Lost life
+		  loseSong.volume=0.4;
 		  loseSong.play();
           pacman.life--;
           pacman.resetPosition();
@@ -231,20 +228,6 @@ function animate() {
 
     }
   }
-
-    //draw targets (test)
-    /*context.fillStyle = "red";
-    context.fillRect(ghostContainer[0].getTarget()[1]*16, ghostContainer[0].getTarget()[0]*16, 5, 5);
-
-    context.fillStyle = "pink";
-    context.fillRect(ghostContainer[1].getTarget()[1]*16, ghostContainer[1].getTarget()[0]*16, 5, 5);
-
-    context.fillStyle = "cyan";
-    context.fillRect(ghostContainer[2].getTarget()[1]*16, ghostContainer[2].getTarget()[0]*16, 5, 5);
-
-    context.fillStyle = "orange";
-    context.fillRect(ghostContainer[3].getTarget()[1]*16, ghostContainer[3].getTarget()[0]*16, 5, 5);
-    */
 }
 
 // function called when user press key with keyboard
