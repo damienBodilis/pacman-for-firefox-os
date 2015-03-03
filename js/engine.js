@@ -171,19 +171,18 @@ function animate() {
   } else {
     for(var i = 0; i < ghostContainer.length; ++i){
       if ((pacman.getPositionX() == ghostContainer[i].getPositionX() && pacman.getPositionY() == ghostContainer[i].getPositionY())) {
-        if(ghostContainer[i].eatable){
+        if(ghostContainer[i].eatable == true){
           pacman.score += 200;
-		      eatGhost.play();
+		    //  eatGhost.play();
           ghostContainer[i].hasBeenEaten();
-          console.log(ghostContainer[i].isEaten);
         } else {
-          // Lost life
-		      loseSong.play();
-          pacman.life--;
-          pacman.resetPosition();
-          for(var i = 0; i < ghostContainer.length; ++i){
-            ghostContainer[i].reset();
-          }
+			// Lost life
+			//loseSong.play();
+			pacman.life--;
+			pacman.resetPosition();
+			for(var i = 0; i < ghostContainer.length; ++i){
+			ghostContainer[i].reset();
+			}
         }
       }
 
