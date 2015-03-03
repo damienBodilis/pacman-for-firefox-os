@@ -212,7 +212,7 @@ function animate() {
           pacman.score += 200;
 		  eatGhost.volume=0.4;
 		  eatGhost.play();
-          ghostContainer[i].reset();
+		  ghostContainer[i].hasBeenEaten();
         } else {
           // Lost life
 		  loseSong.volume=0.4;
