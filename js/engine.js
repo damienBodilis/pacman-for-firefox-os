@@ -21,7 +21,6 @@ window.addEventListener('load', function () {
     // add events listener for keyboard
     window.addEventListener("keydown", pacmanDirection, true);
     window.addEventListener("keyup", pacmanDirection, true);
-
     // create ghosts
     ghostContainer = new Array();
     ghostContainer.push(new GhostRed(152, 136, 0));

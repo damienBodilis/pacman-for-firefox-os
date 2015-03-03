@@ -17,7 +17,10 @@ var varProperties =
 	  "victoriousSong": "resources/sounds/pacman_winner.ogg",
 	  "loseSong": "resources/sounds/pacman_death.wav",
 	  "wallpaperTitre" : "resources/img/title_bombers.png",
-	  "winnerPersonnage": "resources/img/winner_pacman.png"
+	  "winnerPersonnage": "resources/img/winner_pacman.png",
+	  "test": "resources/img/title_pacman.png",
+	  "test2": "resources/img/title_pacman2.png",
+	  "test3": "resources/img/title_pacman3.png"
 	}
 
 //IMAGES du menu
@@ -27,6 +30,12 @@ var wallpaper = new Image();
 wallpaper.src = varProperties.wallpaperTitre;
 var winnerPersonnage = new Image();
 winnerPersonnage.src = varProperties.winnerPersonnage;
+var test = new Image();
+test.src = varProperties.test;
+var test2 = new Image();
+test2.src = varProperties.test2;
+var test3 = new Image();
+test3.src = varProperties.test3;
 //==============
 
 //AUDIO du menu
