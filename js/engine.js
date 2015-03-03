@@ -88,7 +88,8 @@ var modeChangeTimerStartTime = null;
 
 function runModeChanger(){
 	difficulte = optionsData.loadDifficulty();
-
+  console.log("coucou :");
+  console.log(difficulte);
     modeChangeTimerStartTime = new Date().getSeconds();
     modeChangeTimer = setTimeout(function(){
         for(var i = 0; i < ghostContainer.length; ++i){
@@ -101,7 +102,7 @@ function runModeChanger(){
         if(modeTimes.length > 0) {
             runModeChanger();
         }
-        else if(difficulte == 1){
+        else if(difficulte == 0){
 		  console.log("EASY BITCH");
           modeTimes = [
           { time: 0, changeTo: "scatter"},
@@ -114,7 +115,7 @@ function runModeChanger(){
           { time: 5, changeTo: "scatter"},
           ];
         }
-    		else if(difficulte == 2){
+    		else if(difficulte == 1){
 			console.log("NORMAL BITCH");
     			modeTimes = [
     			{ time: 0, changeTo: "scatter"},
@@ -127,7 +128,7 @@ function runModeChanger(){
     			{ time: 5, changeTo: "chase"},
     			];
     		}
-        else if(difficulte == 3){
+        else if(difficulte == 2){
 		console.log("HARD BITCH");
           modeTimes = [
           { time: 0, changeTo: "chase"},
