@@ -71,6 +71,19 @@ OptionStorage.prototype.loadDifficulty = function (){
 	}
 	return 0;
 }
+
+OptionStorage.prototype.saveLevel = function (value){
+	localStorage['level'] = value;
+}
+
+OptionStorage.prototype.loadLevel = function (){
+	var level = parseInt(localStorage['level']);
+	if (!isNaN(level) && 0 <= level && level < 3) {
+		return level;
+	}
+	return 0;
+}
+
 OptionStorage.prototype.saveScores = function (value){
 	localStorage['scores'] = JSON.stringify(value);
 

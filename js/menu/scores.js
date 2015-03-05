@@ -30,8 +30,6 @@ Scores.prototype.unbind = function() {
 Scores.prototype.updateByClick = function (event){
 	
 	var computed  = adaptCoords(event.clientX, event.clientY);
-	console.log("X : "+computed.x);
-	console.log("Y : "+computed.y);
 	
 	if (between(computed.y, 80, 100)){
 		scoreSelected = 1;

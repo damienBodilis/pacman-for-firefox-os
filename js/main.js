@@ -16,26 +16,27 @@ var varProperties =
 	  "eatGhost": "resources/sounds/pacman_eatghost.wav",
 	  "victoriousSong": "resources/sounds/pacman_winner.ogg",
 	  "loseSong": "resources/sounds/pacman_death.wav",
+	  "pacmanHand": "resources/img/menu_hand_title.png",
 	  "wallpaperTitre" : "resources/img/title_bombers.png",
 	  "winnerPersonnage": "resources/img/winner_pacman.png",
-	  "test": "resources/img/title_pacman.png",
-	  "test2": "resources/img/title_pacman2.png",
-	  "test3": "resources/img/title_pacman3.png"
+	  "level1": "resources/img/level1.png",
+	  "level2": "resources/img/level2.png",
+	  "level3": "resources/img/level3.png"
 	}
 
 //IMAGES du menu
 var pacmanHand = new Image();
-pacmanHand.src = varProperties.mainTitre;
+pacmanHand.src = varProperties.pacmanHand;
 var wallpaper = new Image();
 wallpaper.src = varProperties.wallpaperTitre;
 var winnerPersonnage = new Image();
 winnerPersonnage.src = varProperties.winnerPersonnage;
-var test = new Image();
-test.src = varProperties.test;
-var test2 = new Image();
-test2.src = varProperties.test2;
-var test3 = new Image();
-test3.src = varProperties.test3;
+var level1 = new Image();
+level1.src = varProperties.level1;
+var level2 = new Image();
+level2.src = varProperties.level2;
+var level3 = new Image();
+level3.src = varProperties.level3;
 //==============
 
 //AUDIO du menu
