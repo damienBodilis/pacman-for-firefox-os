@@ -42,6 +42,7 @@ Menu.prototype.launchGame = function () {
 	$('#menu').css('display', 'none');
 	$('#grid').css('display', 'block');
 	$('#buttons').css('display', 'block');
+	setupMap(optionsData.loadLevel() + 1);
 	isMenuOn = false;
 }
 

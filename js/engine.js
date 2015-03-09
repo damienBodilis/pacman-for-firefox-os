@@ -21,7 +21,6 @@ window.addEventListener('load', function () {
     // add events listener for keyboard
     window.addEventListener("keydown", pacmanDirection, true);
     window.addEventListener("keyup", pacmanDirection, true);
-
     // create ghosts
     ghostContainer = new Array();
     ghostContainer.push(new GhostRed(152, 136, 0));
@@ -103,7 +102,6 @@ function runModeChanger(){
             runModeChanger();
         }
         else if(difficulte == 0){
-		  console.log("EASY BITCH");
           modeTimes = [
           { time: 0, changeTo: "scatter"},
           { time: 7, changeTo: "scatter"},
@@ -116,7 +114,6 @@ function runModeChanger(){
           ];
         }
     		else if(difficulte == 1){
-			console.log("NORMAL BITCH");
     			modeTimes = [
     			{ time: 0, changeTo: "scatter"},
     			{ time: 7, changeTo: "chase"},
@@ -129,7 +126,6 @@ function runModeChanger(){
     			];
     		}
         else if(difficulte == 2){
-		console.log("HARD BITCH");
           modeTimes = [
           { time: 0, changeTo: "chase"},
           { time: 7, changeTo: "chase"},
@@ -183,11 +179,18 @@ function gameStep() {
 	window.requestAnimationFrame(step);
 }
 
+var currentLevel;
+
 function animate() {
   newTime = new Date();
   newTime = newTime.getTime();
   
   context.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  var newLevel = optionsData.loadLevel() + 1;
+  if(currentLevel !== newLevel) {
+	setupMap(newLevel);
+	currentLevel = newLevel;
+  }
   map.draw();
   pacman.draw();
 
@@ -199,6 +202,8 @@ function animate() {
   // next animation
   if (map.end < 1) {
     alert("You win !\n" + "votre score est de : " + pacman.score);
+	menuMusic.pause();
+	victoriousSong.play();
     window.location.reload();
   } else if (pacman.life == 0) {
     // Loose game
@@ -213,7 +218,7 @@ function animate() {
           pacman.score += 200;
 		  eatGhost.volume=0.4;
 		  eatGhost.play();
-          ghostContainer[i].reset();
+		  ghostContainer[i].hasBeenEaten();
         } else {
           // Lost life
 		  loseSong.volume=0.4;

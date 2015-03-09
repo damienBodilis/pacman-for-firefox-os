@@ -14,7 +14,7 @@ Options.prototype.addButton = function () {
 	document.getElementById("inputPlayer").style.display = "block";
 	document.getElementById("inputPlayer").style.top = "50%";
 	document.getElementById("inputPlayer").style.left = "60%";
-//	document.getElementById("inputPlayer").style.height = canvas.height/88+"%";
+ // document.getElementById("inputPlayer").style.height = canvas.height/88+"%";
 //	document.getElementById("inputPlayer").style.width = canvas.width/35+"%";
 }
 

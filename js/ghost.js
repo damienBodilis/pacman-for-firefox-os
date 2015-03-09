@@ -15,7 +15,7 @@ function Ghost(color, _x, _y, _idleTime)
     this.imageSrcGhost = "";
     this.token = 0;
     this.target = [10, 10];
-
+	this.isEaten = 0;
     this.idleTime = _idleTime;
 };
 
@@ -36,6 +36,19 @@ Ghost.prototype.reset = function(){
     }.bind(this), 1000 * this.idleTime);
 };
 
+Ghost.prototype.hasBeenEaten = function(){
+    this.isEaten = 1;
+    this.image.src = "resources/img/eye.png";
+    console.log(this.Ghost);
+    this.setMode("backHome");
+    console.log(this.target);
+    console.log(this.getMode());
+    console.log(this.getPositionX());
+    if(this.getPositionX == 9 && this.getPositionY == 8){
+        this.isEaten = 0;
+        this.image.src = this.imageSrcGhost;
+    }
+};
 Ghost.prototype.makeEatable = function(){
     this.image.src = "resources/img/eatable_ghost.png";
     this.eatable = true;
