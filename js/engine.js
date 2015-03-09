@@ -192,6 +192,15 @@ function animate() {
 	currentLevel = newLevel;
   }
   map.draw();
+
+  for(y=0; y < map.lines; y++) {
+    for (x=0; x < map.columns; x++) {
+      if (map.grid[y][x] == 1){
+        map.drawWallBlock(x, y);
+      }
+    }
+  }
+
   pacman.draw();
 
   // Draw ghosts
