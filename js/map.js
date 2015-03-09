@@ -312,7 +312,7 @@ function setupMap(level) {
 
 						if (this.grid[y][x] == 1) {
 							// Wall
-							//this.drawWallBlock(x, y);
+							this.drawWallBlock(x, y);
 
 						} else if (this.grid[y][x] == 2) {
 							// Little Food
