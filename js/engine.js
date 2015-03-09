@@ -154,7 +154,7 @@ function pauseModeChanger(){
 
 
 // animation function
-var fps = 60;
+var fps = 18;
 var now, delta;
 var then = Date.now();
 var interval = 1000/fps;
