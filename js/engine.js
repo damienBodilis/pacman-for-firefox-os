@@ -201,23 +201,25 @@ function animate() {
 
   // next animation
   if (map.end < 1) {
-    alert("You win !\n" + "votre score est de : " + pacman.score);
-	menuMusic.pause();
-	victoriousSong.play();
-	var scores = optionsData.loadScores();
-				var scoreSaved = false;
-				for (var i = 0; i < scores.scores.length ; i++){
-
-					if((eval(scores.scores[i].mount) < eval(pacman.score)) && scoreSaved===false ){
-
-						scores.scores[i].mount = eval(pacman.score);
-						scores.scores[i].nick = optionsData.loadNickName();
-						optionsData.saveScores(scores);
-						scoreSaved = true;
-
-					}	
+		menuMusic.pause();
+		victoriousSong.play();
+		alert("You win !\n" + "votre score est de : " + pacman.score);
+	
+		var scores = optionsData.loadScores();
+					var scoreSaved = false;
 					
-				}
+					
+					for (var i = 0; i < scores.scores.length ; i++){
+
+						if((eval(scores.scores[i].mount) < eval(pacman.score)) && scoreSaved===false ){
+							scores.scores[i].mount = eval(pacman.score);
+							scores.scores[i].nick = optionsData.loadNickName();
+							optionsData.saveScores(scores);
+							scoreSaved = true;
+
+						}
+					}						
+						
     window.location.reload();
   } else if (pacman.life == 0) {
     // Loose game
