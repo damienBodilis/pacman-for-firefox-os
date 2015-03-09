@@ -1,6 +1,6 @@
 /* --- Init global variable -- */
 var gameCanvas, context;
-var difficulte = 1;
+var difficulte = 2;
 // For time
 var lastTimeEatable, newTime, lastTime;
 // Load event

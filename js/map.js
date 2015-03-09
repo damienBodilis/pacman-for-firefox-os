@@ -295,7 +295,7 @@ function setupMap(level) {
 
 
 				context.lineWidth = 2;
-				context.strokeStyle = '#0037ff';
+				context.strokeStyle = '#0DFF00';
 				context.stroke();
 			},
 			draw: function(){
@@ -469,7 +469,7 @@ function setupMap(level) {
 
 
 				context.lineWidth = 2;
-				context.strokeStyle = '#0037ff';
+				context.strokeStyle = '#FF0000';
 				context.stroke();
 			},
 			draw: function(){
