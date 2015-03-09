@@ -295,7 +295,7 @@ function setupMap(level) {
 
 
 				context.lineWidth = 2;
-				context.strokeStyle = '#0037ff';
+				context.strokeStyle = '#0DFF00';
 				context.stroke();
 			},
 			draw: function(){
@@ -312,7 +312,7 @@ function setupMap(level) {
 
 						if (this.grid[y][x] == 1) {
 							// Wall
-							this.drawWallBlock(x, y);
+							//this.drawWallBlock(x, y);
 
 						} else if (this.grid[y][x] == 2) {
 							// Little Food
@@ -469,7 +469,7 @@ function setupMap(level) {
 
 
 				context.lineWidth = 2;
-				context.strokeStyle = '#0037ff';
+				context.strokeStyle = '#FF0000';
 				context.stroke();
 			},
 			draw: function(){
