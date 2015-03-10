@@ -25,7 +25,7 @@ Ghost.prototype.constructor = Ghost;
 
 
 Ghost.prototype.reset = function(){
-    console.log("res");
+    // console.log("res");
     this.resetPosition();
     this.setMode("idle");
     this.token = 0;
@@ -39,11 +39,11 @@ Ghost.prototype.reset = function(){
 Ghost.prototype.hasBeenEaten = function(){
     this.isEaten = 1;
     this.image.src = "resources/img/eye.png";
-    console.log(this.Ghost);
+    // console.log(this.Ghost);
     this.setMode("backHome");
-    console.log(this.target);
-    console.log(this.getMode());
-    console.log(this.getPositionX());
+    // console.log(this.target);
+    // console.log(this.getMode());
+    // console.log(this.getPositionX());
     if(this.getPositionX == 9 && this.getPositionY == 8){
         this.isEaten = 0;
         this.image.src = this.imageSrcGhost;

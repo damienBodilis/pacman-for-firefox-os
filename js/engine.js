@@ -87,8 +87,8 @@ var modeChangeTimerStartTime = null;
 
 function runModeChanger(){
 	difficulte = optionsData.loadDifficulty();
-  console.log("coucou :");
-  console.log(difficulte);
+  // console.log("coucou :");
+  // console.log(difficulte);
     modeChangeTimerStartTime = new Date().getSeconds();
     modeChangeTimer = setTimeout(function(){
         for(var i = 0; i < ghostContainer.length; ++i){
