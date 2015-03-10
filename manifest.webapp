@@ -3,7 +3,8 @@
   "description": "An adaptation of pacman game for Firefox OS",
   "launch_path": "/index.html",
   "icons": {
-    "128": "/img/icon-128.png"
+    "128": "/resources/img/icon-128x128.png",
+	"512": "/resources/img/icon_512x512.png"
   },
   "developer": {
     "name": "Kevin, Antony & Gram",
