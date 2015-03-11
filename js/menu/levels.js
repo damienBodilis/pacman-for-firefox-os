@@ -1,8 +1,5 @@
 var levelSelected = 1;
 
-//var difficultiesTab = ["EASY", "NORMAL", "HARD"];
-//var difficultyTabTaille = 3;
-
 function Levels() {
 	theLevels = this;
 	theLevels.bind();	
@@ -150,35 +147,36 @@ Levels.prototype.update = function () {
 
 	//gestion du son au clavier
 	switch(levelSelected) {
-		case 1: if(menuSoundPlayed.sound === false){
+		case 1: if(menuSoundPlayed.level1 === false){
+					console.log("Test1");
 					beepMenu.play();
-					menuSoundPlayed.sound = true;
-					menuSoundPlayed.nickname = false;
-					menuSoundPlayed.difficulty = false;
+					menuSoundPlayed.level1 = true;
+					menuSoundPlayed.level2 = false;
+					menuSoundPlayed.level3 = false;
 					menuSoundPlayed.exit = false;
 				}
 				break;
-		case 2: if(menuSoundPlayed.nickname === false){
+		case 2: if(menuSoundPlayed.level2 === false){
 					beepMenu.play();
-					menuSoundPlayed.sound = false;
-					menuSoundPlayed.nickname = true;
-					menuSoundPlayed.difficulty = false;
+					menuSoundPlayed.level1 = false;
+					menuSoundPlayed.level2 = true;
+					menuSoundPlayed.level3 = false;
 					menuSoundPlayed.exit = false;
 				}
 				break;	
-		case 3: if(menuSoundPlayed.difficulty === false){
+		case 3: if(menuSoundPlayed.level3 === false){
 					beepMenu.play();
-					menuSoundPlayed.sound = false;
-					menuSoundPlayed.nickname = false;
-					menuSoundPlayed.difficulty = true;
+					menuSoundPlayed.level1 = false;
+					menuSoundPlayed.level2 = false;
+					menuSoundPlayed.level3 = true;
 					menuSoundPlayed.exit = false;
 				}
 				break;
 		case 4: if(menuSoundPlayed.exit === false){
 					beepMenu.play();
-					menuSoundPlayed.sound = false;
-					menuSoundPlayed.nickname = false;
-					menuSoundPlayed.difficulty = false;
+					menuSoundPlayed.level1 = false;
+					menuSoundPlayed.level2 = false;
+					menuSoundPlayed.level3 = false;
 					menuSoundPlayed.exit = true;
 				}		
 				break;				

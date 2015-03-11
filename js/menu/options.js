@@ -11,11 +11,19 @@ function Options() {
 }
 
 Options.prototype.addButton = function () {
-	document.getElementById("inputPlayer").style.display = "block";
-	document.getElementById("inputPlayer").style.top = "50%";
-	document.getElementById("inputPlayer").style.left = "60%";
- // document.getElementById("inputPlayer").style.height = canvas.height/88+"%";
-//	document.getElementById("inputPlayer").style.width = canvas.width/35+"%";
+	var inputPlayer = document.getElementById("inputPlayer");
+	inputPlayer.style.display = "block";
+	inputPlayer.style.top = "50%";
+	inputPlayer.style.left = "60%";
+	inputPlayer.focus();
+	var self = this;
+	function submitAndHide() {
+		self.submitNick();
+		self.hideButton();
+	}
+	$(inputPlayer).on("blur", submitAndHide);
+	$(inputPlayer).on("keydown", function (e){ if (e.which === keys.enter) { submitAndHide(); }});
+
 }
 
 Options.prototype.hideButton = function () {
@@ -210,7 +218,6 @@ Options.prototype.update = function () {
 		}
 
 		if (optionSelected === 3 ){
-
 			optionsData.saveDifficulty((optionsData.loadDifficulty() + 1) % difficultiesTab.length);
 			beepEnter.play();
 		}
@@ -311,7 +318,7 @@ Options.prototype.render = function () {
 	
 	//var deltaX = Math.random() * 2;
 	//var deltaY = Math.random() * 2;
-	//ctx.fillText(" Exit ", screenWidth/2 + deltaX,400 + deltaY);
+
 	switch(optionSelected) {
 		case 1: ctx.fillStyle = "yellow";
 				ctx.font = this.taille-5+"px Pacman";
