@@ -101,7 +101,9 @@ function runModeChanger(){
         if(modeTimes.length > 0) {
             runModeChanger();
         }
-        else if(difficulte == 0){
+        
+		if(difficulte == 0){
+		  //console.log("EASY MODE");
           modeTimes = [
           { time: 0, changeTo: "scatter"},
           { time: 7, changeTo: "scatter"},
@@ -114,6 +116,7 @@ function runModeChanger(){
           ];
         }
     		else if(difficulte == 1){
+			//console.log("NORMAL MODE");
     			modeTimes = [
     			{ time: 0, changeTo: "scatter"},
     			{ time: 7, changeTo: "chase"},
@@ -126,6 +129,7 @@ function runModeChanger(){
     			];
     		}
         else if(difficulte == 2){
+		//console.log("HARD MODE");
           modeTimes = [
           { time: 0, changeTo: "chase"},
           { time: 7, changeTo: "chase"},
@@ -180,6 +184,7 @@ function gameStep() {
 }
 
 var currentLevel;
+var lastDifficulty;
 
 function animate() {
   newTime = new Date();
@@ -190,6 +195,13 @@ function animate() {
   if(currentLevel !== newLevel) {
 	setupMap(newLevel);
 	currentLevel = newLevel;
+  }
+  
+  var newDifficulty = optionsData.loadDifficulty();
+  if(lastDifficulty !== newDifficulty) {
+	console.log("last : " + lastDifficulty + " new : " + newDifficulty);
+	runModeChanger();
+	lastDifficulty = newDifficulty;
   }
   map.draw();
 
